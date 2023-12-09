@@ -5,6 +5,8 @@ import (
 	"github.com/cdvelop/strings"
 )
 
+const repository = `github.com/cdvelop`
+
 // other_vars ej: main.encryption_key:123
 func Add(other_vars map[string]string) (flags, err string) {
 	const this = "ldflags Add error "
@@ -15,13 +17,11 @@ func Add(other_vars map[string]string) (flags, err string) {
 	if err != "" {
 		return "", this + err
 	}
-	ldflags = append(ldflags, `-X 'main.app_version=`+tag+`'`)
+	ldflags = append(ldflags, `-X '`+repository+`/model.app_version=`+tag+`'`)
 
-	go_version, err := GoVersion()
-	if err != "" {
-		return "", this + err
-	}
-	ldflags = append(ldflags, `-X 'main.go_version=`+go_version+`'`)
+	ldflags = append(ldflags, `-X '`+repository+`/model.go_version=`+GoVersion()+`'`)
+
+	ldflags = append(ldflags, `-X '`+repository+`/model.tinygo_version=`+TinyGoVersion()+`'`)
 
 	for k, v := range other_vars {
 		ldflags = append(ldflags, `-X '`+k+`=`+v+`'`)
