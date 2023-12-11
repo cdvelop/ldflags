@@ -8,7 +8,3 @@ require (
 	github.com/cdvelop/git v0.0.2
 	github.com/cdvelop/strings v0.0.8
 )
-
-replace github.com/cdvelop/git => ../git
-
-replace github.com/cdvelop/strings => ../strings
