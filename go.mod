@@ -6,5 +6,5 @@ replace github.com/cdvelop/model => ../model
 
 require (
 	github.com/cdvelop/git v0.0.2
-	github.com/cdvelop/strings v0.0.9
+	github.com/cdvelop/strings v0.0.11
 )
